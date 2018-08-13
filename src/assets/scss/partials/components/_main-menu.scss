@@ -1,0 +1,91 @@
+.main-menu-container
+{
+    margin-right: 20px;
+    align-self: flex-end;
+    display: flex;
+	float: right;
+	align-items: center;
+}
+
+.menu-btn
+{
+	position: relative;
+	display: block;
+	background-color: #fff;
+    border-radius: 50%;
+    float: right;
+	width: 40px;
+	height: 40px;
+}
+
+.menu-btn span,
+.menu-btn span::before,
+.menu-btn span::after
+{
+	position: absolute;
+	top: 50%;
+	margin-top: -1px;
+	left: 50%;
+	margin-left: -10px;
+	width: 20px;
+	height: 2px;
+	background-color: #222;
+}
+.menu-btn span::before,
+.menu-btn span::after
+{
+	content: '';
+	display: block;
+	transition: 0.4s;
+}
+
+.menu-btn span::before
+{
+	transform: translateY(-5px);
+}
+.menu-btn span::after
+{
+	transform: translateY(+5px);
+}
+.menu-btn-active span::before
+{
+	transform: rotate(35deg);
+	width: 10px;
+	transform-origin: left bottom;
+}
+
+.menu-btn-active span::after
+{
+	transform: rotate(-35deg);
+	width: 10px;
+	transform-origin: left top;
+}
+
+.main-menu-container nav
+{
+	float: left;
+}
+
+.menu-nav-link
+{
+	display: inline-block;
+	text-decoration: none;
+	color: #fff;
+	margin-right: 30px;
+	transition: 0.4s;
+	transform-origin: right center;
+	transform: translateX(20%);
+	opacity: 0;
+}
+
+.menu-nav-link-active
+{
+	transform: translateX(0%);
+	opacity: 1;
+}
+.menu-nav-link-active:hover
+{
+	text-decoration: none;
+	color: #708090;
+
+}

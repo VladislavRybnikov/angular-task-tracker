@@ -1,0 +1,52 @@
+.header, .footer
+{
+    color: $white-font-color;
+    background-color: $elements-color;
+    height: 150px;
+    width: 80%;
+    align-self: center;
+    
+}
+
+.header
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;    
+}
+
+.footer
+{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.container
+{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: $main-background-color;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;  
+    flex-direction: column;
+    
+}
+
+.content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    align-self: center;
+    width: 80%;
+    height: 100%;  
+    justify-self: flex-end;  
+    justify-content: center;    
+}
