@@ -4,11 +4,12 @@
     align-self: flex-end;
     display: flex;
 	float: right;
-	align-items: center;
+    align-items: center;
 }
 
 .menu-btn
 {
+    
 	position: relative;
 	display: block;
 	background-color: #fff;
@@ -68,6 +69,7 @@
 
 .menu-nav-link
 {
+    margin: 10px;
 	display: inline-block;
 	text-decoration: none;
 	color: #fff;

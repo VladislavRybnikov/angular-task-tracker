@@ -6,6 +6,7 @@
     <a class= "menu-nav-link" [ngClass]="navClasses" routerLink="/login">Login</a>
     <a class= "menu-nav-link" [ngClass]="navClasses" routerLink="/register">Register</a>
     <a class= "menu-nav-link" [ngClass]="navClasses" routerLink="/main">Main</a>
+    <a *ngIf="isAuthorized()" class= "menu-nav-link" [ngClass]="navClasses" routerLink="/main">Account</a>
     <a href="javascript:void(0);" class="menu-btn" [ngClass]="btnClasses" (click)="toggleClasses();">
         <span></span>
       </a>
@@ -15,7 +16,8 @@
   <div class="content">
     <router-outlet></router-outlet>
   </div>
-  <div class="footer"></div>
+
+  <div class="footer"><br><br><br>TaskTracker-2018</div>
 <div>
 
 

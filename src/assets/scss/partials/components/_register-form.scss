@@ -1,0 +1,8 @@
+.register-form
+{
+    display: flex;
+    flex-direction: column;
+    @extend %base-form;
+    height: 80%;
+    width: 50%;
+}

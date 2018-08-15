@@ -1,0 +1,17 @@
+%base-form
+{
+    display: flex;
+    border-radius: 25px;
+    background-color: #f2f2f2;
+}
+
+.form-container
+{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,34 @@
+<div >
+    <div class="message-box">
+      <div style="color: red;"*ngIf="state === 'validationError'">
+        *All fields are required.
+      </div>
+      <div style="color: red;" *ngIf="state === 'passwordMatchingError'">
+          *Password do not match.
+        </div>  
+        <div style="color: red;" *ngIf="state === 'passwordValidationError'">
+            *Password must contain at least 8 characters, one symbol,
+             one number and letters in differnt cases.
+          </div> 
+      <div *ngIf="state === 'loading'">
+          <img src="../assets/images/loading.gif" width="50px" height="50px" alt="logo image">Loading...
+      </div>
+      <div *ngIf="state === 'success'">
+        Successs.
+      </div>  
+    </div>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+  
+      <div *ngFor="let question of questions" class="form-row">
+        <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
+      </div>
+      <br>
+      <div class="volume-btn-holder" style="margin-bottom: 20px">
+        <button class="volume-btn" style="width:120px; height: 40px; margin-left: 230%" type="submit">Submit</button>
+      </div>
+    </form>
+  
+  </div>
+  
+  

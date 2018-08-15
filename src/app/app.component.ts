@@ -14,6 +14,11 @@ export class AppComponent {
 
   }
 
+  isAuthorized()
+  {
+    return this.service.isAuthorized();
+  }
+
   btnClasses = "menu-btn";
   navClasses = "menu-nav-link";
 

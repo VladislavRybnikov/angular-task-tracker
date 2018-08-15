@@ -51,4 +51,9 @@ export class AccountManagerService {
     this.tokenManager.deleteToken();
   }
 
+  isAuthorized()
+  {
+    this.tokenManager.hasToken();
+  }
+
 }

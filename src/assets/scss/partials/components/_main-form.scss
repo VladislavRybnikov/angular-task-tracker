@@ -1,0 +1,9 @@
+
+.main-form
+{
+    display: flex;
+    flex-direction: column;
+    @extend %base-form;
+    height: 90%;
+    width: 75%;
+}
