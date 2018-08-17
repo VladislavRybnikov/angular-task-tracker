@@ -1,0 +1,9 @@
+.account-info-form
+{
+    margin: 20px;
+    display: flex;
+    width: 400px;
+    height: 700px;
+    flex-direction: column;
+    @extend %base-form;
+}

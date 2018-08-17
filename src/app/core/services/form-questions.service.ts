@@ -12,6 +12,30 @@ export class FormQuestionsService {
 
   constructor() { }
 
+  getLoginQuestions()
+  {
+    let questions: QuestionBase<any>[]=[
+      new TextboxQuestion({
+        key: 'Name',
+        label: 'Name',
+        value: '',
+        required: true,
+        order: 1
+      }),
+
+      new TextboxQuestion({
+        key: 'Password',
+        label: 'Password',
+        value: '',
+        required: true,
+        order: 2
+      }) 
+    ];
+
+    
+    return questions.sort((a, b) => a.order - b.order);
+  }
+
   getRegistrationQuestions()
   {
     let questions: QuestionBase<any>[]=[

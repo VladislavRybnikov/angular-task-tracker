@@ -4,34 +4,32 @@ import { LoginModel } from '../models/login-model';
 import { RegistrationModel } from '../models/registration-model';
 import { TokenManagerService } from './token-manager.service';
 import { HeaderCreatorService } from './helpers/header-creator.service'; 
+import { Observable } from '../../../../node_modules/rxjs';
+import { TokenModel } from '../models/token-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountManagerService {
 
-  readonly baseUrl = "";
+  readonly baseUrl = "http://localhost:6850/api/account";
 
   constructor(private http: HttpClient,
      private tokenManager: TokenManagerService,
       private headerCreator: HeaderCreatorService) { }
 
-  login(model: LoginModel)
+  login(model: LoginModel): Observable<TokenModel>
   {
     const url = `${this.baseUrl}/login`;
 
-    let token = this.http.post<string>(url, model);
-
-    this.tokenManager.setToken(token);
+    return this.http.post<TokenModel>(url, model);
   }
 
-  register(model: RegistrationModel)
+  register(model: RegistrationModel) : Observable<TokenModel>
   { 
     const url = `${this.baseUrl}/register`;
 
-    let token = this.http.post<string>(url, model);
-
-    this.tokenManager.setToken(token);
+    return this.http.post<TokenModel>(url, model);
   }
 
   logout()
@@ -40,20 +38,12 @@ export class AccountManagerService {
     {
       throw 'empty token.';
     }
-
-    const url = `${this.baseUrl}/logout`;
-
-    let header = this.headerCreator.getAuthorizationHeaders
-      (this.tokenManager.getToken());
-
-    this.http.post(url, null, header);
-
     this.tokenManager.deleteToken();
   }
 
   isAuthorized()
   {
-    this.tokenManager.hasToken();
+    return this.tokenManager.hasToken();
   }
 
 }

@@ -3,10 +3,11 @@
   <div class = "logo">{{title}}</div>
   <div class ="main-menu-container">
   <nav>
-    <a class= "menu-nav-link" [ngClass]="navClasses" routerLink="/login">Login</a>
-    <a class= "menu-nav-link" [ngClass]="navClasses" routerLink="/register">Register</a>
+    <a *ngIf="isAuthorized() === 'unauthorized'" class= "menu-nav-link" [ngClass]="navClasses" routerLink="/login">Login</a>
+    <a *ngIf="isAuthorized() === 'unauthorized'" class= "menu-nav-link" [ngClass]="navClasses" routerLink="/register">Register</a>
     <a class= "menu-nav-link" [ngClass]="navClasses" routerLink="/main">Main</a>
-    <a *ngIf="isAuthorized()" class= "menu-nav-link" [ngClass]="navClasses" routerLink="/main">Account</a>
+    <a *ngIf="isAuthorized() === 'authorized'" class= "menu-nav-link" [ngClass]="navClasses" routerLink="/user-profile">Account</a>
+    <a *ngIf="isAuthorized() === 'authorized'" class= "menu-nav-link" (click)="logout()" [ngClass]="navClasses" routerLink="/main">Logout</a>
     <a href="javascript:void(0);" class="menu-btn" [ngClass]="btnClasses" (click)="toggleClasses();">
         <span></span>
       </a>

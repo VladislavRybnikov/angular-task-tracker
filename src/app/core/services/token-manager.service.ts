@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TokenModel } from '../models/token-model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class TokenManagerService {
     return true;
   }
 
-  public setToken(content:Object)
+  public setToken(content:TokenModel)
   {
     localStorage.setItem(this.tokenKey, JSON.stringify(content));
   }
@@ -28,9 +29,10 @@ export class TokenManagerService {
     localStorage.removeItem(this.tokenKey);  
   }
 
-  public getToken()
+  public getToken():TokenModel
   {
-    let storedToken:string = localStorage.getItem(this.tokenKey);
+    
+    let storedToken:TokenModel = JSON.parse(localStorage.getItem(this.tokenKey));
     if(!storedToken) throw 'no token found';
     return storedToken;    
   }

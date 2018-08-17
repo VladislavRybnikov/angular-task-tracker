@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormQuestionsService } from '../../core/services/form-questions.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  questions: any[];
 
+  constructor(service: FormQuestionsService) {
+    this.questions = service.getLoginQuestions();
+  }
   ngOnInit() {
   }
 

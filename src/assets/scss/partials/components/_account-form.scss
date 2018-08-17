@@ -1,8 +1,9 @@
-.register-form
+.account-form
 {
     display: flex;
+    width: 900px;
+    min-height: 1000px;
     flex-direction: column;
     @extend %base-form;
-    height: 80%;
-    width: 700px;
+
 }

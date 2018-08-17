@@ -13,6 +13,8 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { DynamicFormQuestionComponent } from './components/dynamic-form-question/dynamic-form-question.component';
 import { PerformerProfileComponent } from './components/performer-profile/performer-profile.component';
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ManagerProfileComponent } from './components/manager-profile/manager-pr
     RegistrationFormComponent,
     DynamicFormQuestionComponent,
     PerformerProfileComponent,
-    ManagerProfileComponent
+    ManagerProfileComponent,
+    LoginFormComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

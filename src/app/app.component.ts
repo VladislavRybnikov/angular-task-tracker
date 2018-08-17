@@ -14,9 +14,20 @@ export class AppComponent {
 
   }
 
+  logout()
+  {
+    this.service.logout();
+  }
+
   isAuthorized()
   {
-    return this.service.isAuthorized();
+    if(this.service.isAuthorized()){
+      return 'authorized';
+    }
+    else{
+    return 'unauthorized';
+    }
+
   }
 
   btnClasses = "menu-btn";
