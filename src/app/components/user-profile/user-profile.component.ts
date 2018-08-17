@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   currentUser;
   hasDescription;
   hasLocation;
+  hasPhone;
   userRole;
 
   selectedTab = 'main';
@@ -22,8 +23,9 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(x => {
       this.currentUser = x;
-      this.hasLocation = x.Country.length > 0;
-      this.hasDescription = x.Info.length > 0;
+      this.hasLocation = x.Country;
+      this.hasDescription = x.Info;
+      this.hasPhone = x.PhoneNumber;
       this.userRole = x.Role;
     });
   }

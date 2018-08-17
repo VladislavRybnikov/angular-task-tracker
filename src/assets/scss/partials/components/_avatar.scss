@@ -4,8 +4,14 @@
     margin-bottom: 20px;  
     @extend %media;
     display: block;
-    border-radius: 125px;
-    width: 200px;
-    height: 200px;
+    border-radius: 75px;
+    width: 150px;
+    height: 150px;
+}
+
+.avatar-small
+{
 
 }
+
+

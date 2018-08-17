@@ -1,9 +1,8 @@
 .account-form
 {
     display: flex;
-    width: 900px;
+    width: 750px;
     min-height: 1000px;
     flex-direction: column;
     @extend %base-form;
-
 }

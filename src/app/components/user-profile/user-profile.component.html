@@ -1,23 +1,30 @@
 <div style="display: flex;">
   <div class="account-info-form">
       <img class="avatar" src="../assets/images/avatar.png" alt="logo image">
-      <a style="text-align: center; text-decoration: none;" href="">change avatar</a>
+      <a style="text-align: center;font-size: 18px" href="" href="#">upload avatar</a>
       <h2 style="text-align: center">{{currentUser['Name']}}</h2>
       <h4 style="text-align: center">{{currentUser['FullName']}}</h4>
       <div style="margin-left: 40px;">Role: {{currentUser['Role']}}</div>
       <br>
       <div style="margin-left: 40px;">
-        Description: <span *ngIf="hasDescription">{{currentUser['Info']}}</span>
-        <span *ngIf="!hasDescription">None</span>
+        Description: <br><textarea readonly *ngIf="hasDescription" 
+        class="form-input" style="height: 100px;
+        width: 250px;
+        font-size: 20px;
+        resize: none;">
+        {{currentUser['Info']}}
+      </textarea>
+      <span *ngIf="!hasDescription"><br>None<br><br></span>
       </div><br>
-      <button style="width: 150px; align-self: center; height: 30px;">Edit bio</button>
+      <button class="settings-btn"
+       (click)="this.changeTab('settings')">Edit</button>
       <br>
       <hr>
       <br> 
       <div style="margin-left: 30px">
         <img style="vertical-align: middle" src="../assets/images/location-icon.png" width="30px" height="30px" alt="">
-        <span *ngIf="!hasLocation" style="margin-left: 15px">None</span>
-        <span *ngIf="hasLocation" style="margin-left: 15px">
+        <span *ngIf="!currentUser['Country']" style="margin-left: 15px">None</span>
+        <span *ngIf="currentUser['Country']" style="margin-left: 15px">
           {{currentUser['City']}}, {{currentUser['Country']}}</span>
       </div>
       <br>
@@ -25,6 +32,13 @@
           <img style="vertical-align: middle" src="../assets/images/mail.png" width="30px" height="30px" alt="">
           <span style="margin-left: 15px;"> {{currentUser['Mail']}} </span>
       </div>
+      <br>
+      <div style="margin-left: 30px;">
+          <img style="vertical-align: middle" src="../assets/images/phone.png" width="30px" height="30px" alt="">
+          <span *ngIf="!currentUser['PhoneNumber']" style="margin-left: 15px">None</span>
+          <span *ngIf="currentUser['PhoneNumber']" style="margin-left: 15px">{{currentUser['PhoneNumber']}}</span>
+      </div>
+      <br>
   </div>
   
   <div class="account-form">
@@ -35,12 +49,12 @@
        (click)="this.changeTab('main')">Overview
       </button>
        <button [ngClass]="performedTabClass"  
-       *ngIf="currentUser['Role'] == 'performer'"
+       *ngIf="this.currentUser['Role'] == 'performer'"
         (click)="this.changeTab('performed')">Performed Tasks</button>
-      <button *ngIf="currentUser['Role'] == 'manager'" 
+      <button *ngIf="this.currentUser['Role'] == 'manager'" 
         [ngClass]="managedTabClass"
         (click)="this.changeTab('managed')">Managed Tasks</button>
-      <button *ngIf="currentUser['Role'] == 'manager'"
+      <button *ngIf="this.currentUser['Role'] == 'manager'"
         [ngClass]="createTabClass"
         (click)="this.changeTab('create-task')">Create Task</button>
       <button 
@@ -57,5 +71,10 @@
         <h2 style="text-align: center">You have not performed tasks yet...</h2>
       </div>
     </div>
+
+    <div *ngIf="selectedTab=='settings'">
+        <app-user-settings [user]="currentUser"></app-user-settings>
+      </div>
+
   </div>
 </div>

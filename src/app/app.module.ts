@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule }          from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,6 +16,7 @@ import { PerformerProfileComponent } from './components/performer-profile/perfor
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,16 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     PerformerProfileComponent,
     ManagerProfileComponent,
     LoginFormComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule, 
     HttpModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

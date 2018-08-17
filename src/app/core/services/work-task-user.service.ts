@@ -51,4 +51,22 @@ export class WorkTaskUserService {
     
   }
 
+  public updateUser(model: WorkTaskUser):Observable<string>
+  {
+    if(!this.tokenManager.hasToken())
+    {
+      throw 'Access denied';
+    }
+
+    const url = `${this.baseUrl}/user/info`;
+
+    const token = this.tokenManager.getToken();
+
+    const authHeader = this.headerCreator
+      .getAuthorizationHeaders(token.access_token);
+
+    return this.http.post<string>(url, model, authHeader);
+      
+  }
+
 }
