@@ -17,6 +17,9 @@ import { ManagerProfileComponent } from './components/manager-profile/manager-pr
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
+import { ManagedTasksComponent } from './components/managed-tasks/managed-tasks.component';
+import { PerformedTasksComponent } from './components/performed-tasks/performed-tasks.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
     ManagerProfileComponent,
     LoginFormComponent,
     UserProfileComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    CreateTaskComponent,
+    ManagedTasksComponent,
+    PerformedTasksComponent
   ],
   imports: [
     BrowserModule,

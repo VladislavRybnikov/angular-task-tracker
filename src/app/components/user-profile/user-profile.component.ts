@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenManagerService } from '../../core/services/token-manager.service';
 import { WorkTaskUserService } from '../../core/services/work-task-user.service';
+import { WorkTaskUser } from '../../core/models/work-task-user';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,13 +13,28 @@ export class UserProfileComponent implements OnInit {
   constructor(private userService: WorkTaskUserService) { }
 
   loading: boolean = false;
-  currentUser;
+  currentUser: WorkTaskUser = {} as WorkTaskUser;
   hasDescription;
   hasLocation;
   hasPhone;
   userRole;
 
   selectedTab = 'main';
+
+  imageToShow: any = "../../../assets/images/Ajax-loader.gif";
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+      this.imageToShow = reader.result;
+    }, false);
+
+    console.log(image);
+
+    if (image) {
+      reader.readAsDataURL(image);
+    }
+  }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(x => {
@@ -28,6 +44,13 @@ export class UserProfileComponent implements OnInit {
       this.hasPhone = x.PhoneNumber;
       this.userRole = x.Role;
     });
+
+    this.userService.getCurrentImage().subscribe
+    (
+      x => {console.log("blob");
+        this.createImageFromBlob(x);},
+      err => {console.log(err);}
+    )
   }
 
   mainTabClass = "tab-button-selected";

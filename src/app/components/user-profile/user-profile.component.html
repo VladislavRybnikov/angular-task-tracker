@@ -1,7 +1,6 @@
 <div style="display: flex;">
   <div class="account-info-form">
-      <img class="avatar" src="../assets/images/avatar.png" alt="logo image">
-      <a style="text-align: center;font-size: 18px" href="" href="#">upload avatar</a>
+      <img class="avatar" [src]="imageToShow" alt="logo image">
       <h2 style="text-align: center">{{currentUser['Name']}}</h2>
       <h4 style="text-align: center">{{currentUser['FullName']}}</h4>
       <div style="margin-left: 40px;">Role: {{currentUser['Role']}}</div>
@@ -14,7 +13,7 @@
         resize: none;">
         {{currentUser['Info']}}
       </textarea>
-      <span *ngIf="!hasDescription"><br>None<br><br></span>
+      <span *ngIf="currentUser['Description']"><br>None<br><br></span>
       </div><br>
       <button class="settings-btn"
        (click)="this.changeTab('settings')">Edit</button>

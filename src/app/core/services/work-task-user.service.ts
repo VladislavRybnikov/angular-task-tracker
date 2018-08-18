@@ -51,6 +51,41 @@ export class WorkTaskUserService {
     
   }
 
+  public getCurrentImage() : Observable<Blob>
+  {
+    if(!this.tokenManager.hasToken())
+    {
+      throw 'Access denied';
+    }
+
+    const url = `${this.baseUrl}/user/image`;
+
+    const token = this.tokenManager.getToken();
+
+    const authHeader = this.headerCreator
+      .getAuthorizationHeaders(token.access_token);
+
+    return this.http.get(url, {headers: authHeader.headers, responseType: "blob"});
+  }
+
+  public updateCurrentImage(formData: FormData) 
+  : Observable<any>
+  {
+    if(!this.tokenManager.hasToken())
+    {
+      throw 'Access denied';
+    }
+
+    const url = `${this.baseUrl}/user/image`;
+
+    const token = this.tokenManager.getToken();
+
+    const authHeader = this.headerCreator
+      .getAuthorizationHeaders(token.access_token);
+
+    return this.http.post(url, formData, authHeader);
+  }
+
   public updateUser(model: WorkTaskUser):Observable<string>
   {
     if(!this.tokenManager.hasToken())
