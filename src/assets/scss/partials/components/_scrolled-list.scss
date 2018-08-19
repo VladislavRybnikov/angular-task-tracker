@@ -1,0 +1,64 @@
+.scrolled-list
+{
+
+    flex-direction: column; 
+    width: 600px; 
+    height: 300px; 
+    overflow-y: auto; 
+    align-self: center;
+    border-radius: 18px;
+    background: #c6cfcf;
+    border: 1px solid darkgrey;
+}
+
+.list-item
+{
+    display: flex;
+    margin: 10px;
+    border-radius: 14px;
+    border-right: 5px solid $main-background-color;
+    border-bottom: 4px solid $main-background-color;
+    border-top: 1px solid #b3bfbf;
+    border-left: 1px solid #b3bfbf;
+    height: 60px;
+    width: 95%;
+    background: $form-color;
+}
+
+.list-item-state-red, .list-item-state-green, 
+.list-item-state-yellow
+{
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 25px;  
+    margin-right: 20px;
+    width: 15px;
+}
+
+.list-item-state-red
+{
+    background-color: $elements-color;
+}
+.list-item-state-green
+{
+    background-color: rgb(12, 160, 73);
+}
+.list-item-state-yellow
+{
+    background-color: rgb(221, 164, 59);
+}
+
+.scrolled-list::-webkit-scrollbar {
+    width: 1.1em;
+    border-radius: 18px;
+}
+
+.scrolled-list::-webkit-scrollbar-track {
+    border-radius: 18px;
+}
+
+.scrolled-list::-webkit-scrollbar-thumb {
+    border-radius: 18px;
+    background: $main-background-color;
+    outline: 2px solid $main-background-color;
+
+}

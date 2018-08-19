@@ -1,3 +1,34 @@
-<p>
-  performed-tasks works!
-</p>
+<div *ngIf="!performedTasks" style="display: flex; flex-direction: column;">
+    <img style="justify-self: center; align-self: center; margin-top: 150px;"
+      width="150px" height="150px"
+     src="../assets/images/sad.png" alt="logo image">
+     <br><br>
+    <h2 style="text-align: center">You have not performed tasks yet...</h2>
+</div>
+
+<div *ngIf="performedTasks" style="display: flex; flex-direction: column;">
+  <h2 style="align-self: center;" class="overview-label">Search</h2>
+  <div style="display: flex; align-self: center;">
+    <div class="search-icon">
+      <img src="../assets/images/search-white.png" width="25px" height="23px"
+      style="margin-left: 10px; margin-top: 4px;">
+    </div><input class="search-input">
+  </div>
+  <br>
+  <span style="margin-left: 80px; font-size: 22px;">Search results:</span>
+  <br>
+  <div class="scrolled-list">
+    <div *ngFor="let task of workTasks">
+      <div class="list-item"><div class="list-item-state-green"></div>
+        <div style="align-self:center; justify-self:flex-start; font-size: 24px;">
+          {{task.Name}}
+        </div>
+        <div style="align-self:center; margin-left: 360px; font-size: 20px;">
+            <a> <img src="../assets/images/edit.png" class="link-image"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><hr>
+  <h2 style="align-self: center;" class="overview-label">Update-task</h2>
+</div>

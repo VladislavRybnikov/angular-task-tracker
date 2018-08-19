@@ -62,18 +62,28 @@
     </div>
 
     <div *ngIf="selectedTab=='performed'">
-      <div style="display: flex; flex-direction: column;">
-        <img style="justify-self: center; margin-top: 150px;"
-          width="150px" height="150px"
-         src="../assets/images/sad.png" alt="logo image">
-         <br><br>
-        <h2 style="text-align: center">You have not performed tasks yet...</h2>
-      </div>
+      <app-performed-tasks></app-performed-tasks>
     </div>
+
+    <div *ngIf="selectedTab=='managed'">
+        <app-managed-tasks></app-managed-tasks>
+      </div>
 
     <div *ngIf="selectedTab=='settings'">
         <app-user-settings [user]="currentUser"></app-user-settings>
-      </div>
+    </div>
+
+    <div *ngIf="selectedTab=='create-task'">
+        <app-create-task></app-create-task>
+    </div>
+
+    <div *ngIf="selectedTab=='main'">
+      <app-performer-profile *ngIf="this.currentUser['Role'] == 'performer'">
+      </app-performer-profile>
+
+      <app-manager-profile *ngIf="this.currentUser['Role'] == 'manager'">
+        </app-manager-profile>
+    </div>
 
   </div>
 </div>

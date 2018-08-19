@@ -73,7 +73,7 @@ export class UserProfileComponent implements OnInit {
     }
     else if(name == 'create-task')
     {
-
+      this.createTabClass = "tab-button-selected";
     }
     else if(name == 'performed')
     {

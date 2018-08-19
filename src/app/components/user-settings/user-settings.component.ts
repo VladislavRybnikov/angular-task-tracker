@@ -69,7 +69,7 @@ export class UserSettingsComponent implements OnInit {
         this.createImageFromBlob(x);},
       err => {console.log(err);}
     );
-    
+
   }
 
   update()
@@ -90,10 +90,10 @@ export class UserSettingsComponent implements OnInit {
         this.loading = false;
         return;
       },
-      ()=>{}
+      ()=>{this.loading = false;}
     );
 
-    if(this.imageToShow){
+    if(this.imageToUpload){
 
       const formData = new FormData();
       formData.append(name, this.imageToUpload,

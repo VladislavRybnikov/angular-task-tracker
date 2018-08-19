@@ -1,3 +1,23 @@
-<p>
-  performer-profile works!
-</p>
+<div style="display: flex; 
+flex-direction: column;">
+  <h2 style="align-self: center;" class = "overview-label">Tasks Information</h2>
+  <div style="font-size: 20px; align-items: center; display: flex; flex-direction: column;">
+    <div>Unconfirmed tasks: 0;</div>
+    <div>Started tasks: 0;</div>
+    <div>Tasks in progress: 0;</div>
+    <div>Complited tasks: 0;</div>
+  </div><hr>
+  <div style ="display: flex; flex-direction: column;" >
+    <h2 style="align-self: center;" class="overview-label">Tasks Progress</h2>
+    <canvas style="margin-left: 10px" id='canvas'>{{barChart}}</canvas>
+  </div>
+  <hr>
+  <h2 style="align-self: center;" class="overview-label">Nearest Deadline</h2>
+  <div style="font-size: 20px; align-items: center; display: flex; flex-direction: column;">
+    <div>Task name: 0;</div>
+    <div>Deadline: 0;</div>
+  </div>
+
+  
+</div>
+
