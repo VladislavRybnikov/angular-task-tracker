@@ -1,3 +1,33 @@
-<p>
-  create-task works!
-</p>
+<div style="display: flex; 
+flex-direction: column; align-items: center;">
+
+  <h2 class="overview-label">Create Task</h2>
+
+  <h4>Task name:</h4>
+  <input class="form-input" style="width: 60%;" [(ngModel)]="taskName">
+  <h4>Category name:</h4>
+  <input class="form-input" style="width: 60%;" [(ngModel)]="categoryName">
+  <h4>Description:</h4>
+  <textarea rows="4" cols="50" class="form-input" style="width:60%; height: 10%;
+   font-size: 20px; resize: none;" [(ngModel)]="description"></textarea>
+  <h4>Deadline:</h4>
+  <input type="date" class="form-input" style="width: 60%;" [(ngModel)]="deadline">
+  <br><hr><br>
+  <button style="margin-top: 50px;" class="settings-btn"
+   (click)="createTask()">Create</button>
+   <div style="display: flex; flex-direction: column; align-items: center;">
+     <div *ngIf= "formState == 'loading'">
+        <img src="../assets/images/loading.gif" width="50px"
+         height="50px" alt="logo image">Loading...
+     </div>
+     <div *ngIf= "formState == 'error'" style="color: red;">
+        *{{errorMsg}}
+     </div>
+     <div *ngIf= "formState == 'success'" style="color: green;">
+       <br>
+      Success.
+     </div>
+
+   </div>
+
+</div>

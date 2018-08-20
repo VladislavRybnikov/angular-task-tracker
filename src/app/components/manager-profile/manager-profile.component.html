@@ -2,19 +2,19 @@
 flex-direction: column;">
   <h2 style="align-self: center;" class = "overview-label">Tasks Information</h2>
   <div style="font-size: 20px; align-items: center; display: flex; flex-direction: column;">
-    <div>Total created tasks: 0;</div>
-    <div>Unconfirmed tasks: 0;</div>
+    <div>Total created tasks: {{tasksCount}}</div>
+    <div>Unconfirmed tasks: {{unconfirmedTasksCount}}</div>
     <div>Complited tasks: 0;</div>
   </div><hr>
   <div style ="display: flex; flex-direction: column;" >
     <h2 style="align-self: center;" class="overview-label">Managed Tasks Progress</h2>
-
+    <canvas style="margin-left: 10px" id='canvas'>{{barChart}}</canvas>
   </div>
   <hr>
   <h2 style="align-self: center;" class="overview-label">Nearest Deadline</h2>
   <div style="font-size: 20px; align-items: center; display: flex; flex-direction: column;">
-    <div>Task name: 0;</div>
-    <div>Deadline: 0;</div>
+    <div>Task name: {{nearestDeadlineTask.Name}}</div>
+    <div>Deadline: {{nearestDeadlineTask.Deadline}}</div>
   </div>
 
   

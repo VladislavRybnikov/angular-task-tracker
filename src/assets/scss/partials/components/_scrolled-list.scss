@@ -26,7 +26,7 @@
 }
 
 .list-item-state-red, .list-item-state-green, 
-.list-item-state-yellow
+.list-item-state-yellow, .list-item-state-blue
 {
     border-bottom-left-radius: 12px;
     border-top-left-radius: 25px;  
@@ -36,7 +36,7 @@
 
 .list-item-state-red
 {
-    background-color: $elements-color;
+    background-color: rgb(226, 40, 40);
 }
 .list-item-state-green
 {
@@ -45,6 +45,11 @@
 .list-item-state-yellow
 {
     background-color: rgb(221, 164, 59);
+}
+
+.list-item-state-blue
+{
+    background-color: rgb(15, 158, 224);
 }
 
 .scrolled-list::-webkit-scrollbar {

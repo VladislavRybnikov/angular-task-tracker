@@ -1,5 +1,6 @@
 export interface WorkTaskUser
 {
+    Id: number;
     Name: string;
     FullName: string;
     Info: string;

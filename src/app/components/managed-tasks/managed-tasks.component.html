@@ -1,3 +1,109 @@
-<p>
-  managed-tasks works!
-</p>
+<div *ngIf="!tasks" style="display: flex; flex-direction: column;">
+    <img style="justify-self: center; align-self: center; margin-top: 150px;"
+      width="150px" height="150px"
+     src="../assets/images/sad.png" alt="logo image">
+     <br><br>
+    <h2 style="text-align: center">You have not performed tasks yet...</h2>
+</div>
+
+<div *ngIf="tasks" style="display: flex; flex-direction: column;">
+  <h2 style="align-self: center;" class="overview-label">Search</h2>
+  <div style="display: flex; align-self: center;">
+    <div class="search-icon">
+      <img src="../assets/images/search-white.png" width="25px" height="19px"
+      style="margin-left: 10px; margin-top: 5px;">
+    </div><input class="search-input" [(ngModel)] = "searchedString" (ngModelChange)="onSearch()">
+  </div>
+  <br>
+  <span style="margin-left: 80px; font-size: 22px;">Search results:</span>
+  <br>
+  <div class="scrolled-list">
+    <div *ngFor="let task of searchedTasks" style="width: 100%;"
+     [ngSwitch]="task['WorkTaskState']">
+      <div class="list-item">
+
+        <div *ngSwitchCase="1" class="list-item-state-red"></div>
+        <div *ngSwitchCase="2" class="list-item-state-yellow"></div>
+        <div *ngSwitchCase="3" class="list-item-state-green"></div>
+        <div *ngSwitchCase="4" class="list-item-state-blue"></div>
+
+        <div style="align-self:center; justify-self:flex-start; font-size: 24px;">
+          {{task.Name}}
+        </div>
+        <div style="align-self:center; display:flex; 
+        justify-content: flex-end; width: 100%; font-size: 20px;">
+            <a style="margin-right: 10px;" (click)="editTaskTab(task['Id'])">
+               <img src="../assets/images/edit.png" class="link-image">
+            </a>
+            <a style="margin-right: 10px;" (click)="addTaskTab(task['Id'])">
+                <img src="../assets/images/add-user.png" class="link-image">
+            </a>
+            <a style="margin-right: 20px;" (click)="deleteTaskTab(task['Id'])">
+                <img src="../assets/images/delete.png" class="link-image">
+             </a>     
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><hr>
+  <div style="display: flex; height: 500px; display: flex; flex-direction: column">
+    <div *ngIf = "taskTab" style="display: flex; flex-direction: column;">
+        <h2 style="align-self: center;" class="overview-label">{{taskTab}}</h2>
+        <div [ngSwitch]="taskTab">
+          <div *ngSwitchCase="'delete'" style="align-self: center;
+          align-items: center; display: flex; flex-direction: column;">
+          <h3>Do you want to delete <span style="color: red;">
+            '{{taskOnChange['Name']}}'
+          </span>?</h3>
+          <h4> Re-enter task name and click 'delete':</h4>
+          <input class="form-input" style="width: 250px;" [(ngModel)]="confirmedName"><br><br>
+          <button class = "settings-btn" (click)="deleteWorkTask()">delete</button>
+          <br>
+          </div>
+          <div *ngSwitchCase="'edit'" style="align-self: center;
+          align-items: center; display: flex; flex-direction: column;">
+          
+            <span> Description:</span>
+            <textarea rows="4" cols="50" class="form-input" style="width:60%; height: 10%;
+              font-size: 20px; resize: none;" [(ngModel)]="taskOnChange['Description']"></textarea>
+            <span>Deadline:</span>
+            <input type="date" class="form-input" style="width: 60%;" 
+            [value]="getTaskDate() | date:'yyyy-MM-dd'"
+            (input)="taskOnChange.Deadline = formatDate($event)">
+            <br>
+            <button class = "settings-btn" (click)="editWorkTask()">edit</button>
+            <br>  
+  
+          </div>
+          <div *ngSwitchCase="'add'"style="align-self: center;
+          align-items: center; display: flex; flex-direction: column;">
+            <h3 style="width: 60%; text-align: center;">You must correctly enter user name if 
+              you want add him to this task as performer.</h3>
+              <h4> User name:</h4>
+              <input class="form-input" style="width: 250px;" [(ngModel)]="performerName"><br><br>
+              <button class = "settings-btn" (click)="addPerformer()">delete</button>
+              <br>
+          </div>
+
+          <div style="align-items: center; width: 100%; display: flex; flex-direction: column;">
+          <div *ngIf="loading">
+              <img src="../assets/images/loading.gif" width="50px"
+               height="50px" alt="logo image">Loading...
+            </div>
+          <div *ngIf="error" style="color: red;">
+              {{error}}
+          </div>
+          <div *ngIf="result" style="color: green;">
+            Success!
+          </div>
+        </div>
+
+        </div>
+        
+    </div>
+    <div *ngIf="!taskTab" style="align-self: center; margin-top: 100px;">
+      <img src="../assets/images/choose.png" width="200px" height="200px">
+      <h2 style="color: slategray; margin: 20px;">choose task option</h2>
+    </div>
+  </div>
+</div>

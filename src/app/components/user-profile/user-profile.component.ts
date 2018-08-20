@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenManagerService } from '../../core/services/token-manager.service';
 import { WorkTaskUserService } from '../../core/services/work-task-user.service';
 import { WorkTaskUser } from '../../core/models/work-task-user';
+import { WorkTask } from '../../core/models/work-task';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,6 +19,8 @@ export class UserProfileComponent implements OnInit {
   hasLocation;
   hasPhone;
   userRole;
+
+  tasks : WorkTask[];
 
   selectedTab = 'main';
 
@@ -50,7 +53,8 @@ export class UserProfileComponent implements OnInit {
       x => {console.log("blob");
         this.createImageFromBlob(x);},
       err => {console.log(err);}
-    )
+    );
+   
   }
 
   mainTabClass = "tab-button-selected";
